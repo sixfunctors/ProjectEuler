@@ -4,7 +4,7 @@
 import time
 t0 = time.clock()
 
-## Solution 1: Naive Solution
+## Solution 1: Naive solution
 a = 1000
 b = 1000
 palindromes = []
