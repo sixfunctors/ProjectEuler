@@ -31,6 +31,7 @@ t1 = time.clock()
 print("Solution 1 took:", round(t1-t0, 4), "seconds.")
 
 ## Solution 2: Probabilistic primality test with reliable witness set
+# sufficient witnesses for all n < 341 550 071 728 321
 witnesses = [2, 3, 5, 7, 11, 13, 17]
 
 # Miller-Rabin
