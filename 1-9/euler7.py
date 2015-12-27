@@ -7,7 +7,7 @@ from random import randrange
 import time
 t0 = time.clock()
 
-## Solution 1: Naive Solution
+## Solution 1: Naive Solution - Unreasonably long
 """
 def isPrime1(n):
     for i in range(2, n):
