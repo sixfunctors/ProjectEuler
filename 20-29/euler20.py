@@ -4,13 +4,18 @@
 import time
 t0 = time.clock()
 
+from math import factorial
+
 ## Solution 1: Naive Solution
 
-string = str(2**1000)
-sum = 0
-for d in string:
-    sum += int(d)
-print(sum)
+def digitsum(x):
+    if (x//10 == 0):
+        return x%10
+    else:
+        return (x%10) + digitsum(x//10)
+
+n = factorial(100)
+print(digitsum(n))
 
 ## End Solution 1
 
