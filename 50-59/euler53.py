@@ -4,7 +4,7 @@
 import time
 t0 = time.clock()
 
-## Solution 1: 
+## Solution 1: Computation
 
 # nCr by one method
 def choose(n, r):
