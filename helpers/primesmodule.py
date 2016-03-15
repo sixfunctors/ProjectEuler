@@ -2,8 +2,8 @@
 # Contains functions for primacy testing
 
 # Miller-Rabin Primality
-witnesses = [2, 3, 5, 7, 11] # accurate for n < 2 152 302 898 747
-def isPrimeMR(n):
+dwitnesses = [2, 3, 5, 7, 11] # accurate for n < 2 152 302 898 747
+def isPrimeMR(n, witnesses = dwitnesses):
     if (n == 2):
         return True
     elif (n <= 1) or (n%2 == 0):

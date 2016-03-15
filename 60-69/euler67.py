@@ -115,7 +115,7 @@ class node:
         self.children = childlist
         self.value = value
 
-# converts the triangle into a grid
+# converts the triangle into an array
 def toGrid(s):
     lines = s.split("\n")
     for i in range(len(lines)):
@@ -125,43 +125,25 @@ def toGrid(s):
 # stores the grid values(prevents unnecessary recursive calls)
 treedict = {}
 
-# converts the grid into a tree
-def toTree(grid, y, x):
-    if ((y, x) in treedict.keys()):
-        return treedict[(y, x)]
-        
-    if (y+1 == ymax):
-        n = node(int(grid[y][x]), [])
-        treedict[(y, x)] = n
-        if (y+x == 0):
-            print("Tree generated")
-        return n
+# evaluates the maximum path to an index (i, j)
+def maxPath(i, j, treedict, cur): 
+    if ((i+1, j) in treedict.keys()):
+        return cur+max(treedict[(i+1, j)], treedict[(i+1, j+1)])
     else:
-        n = node(int(grid[y][x]), [toTree(grid, y+1, x), toTree(grid, y+1, x+1)])
-        treedict[(y, x)] = n
-        if (y+x == 0):
-            print("Tree generated")
-        return n
+        return cur
     
-# finds the maximum path
-def maxTree(tre, count):
-    if (tre.children == []):
-        return tre.value
-    else:
-        max = 0
-        for child in tre.children:
-            cmax = maxTree(child, count+1)
-            if (cmax > max):
-                max = cmax
-        if (count%10 == 0):
-            print(count)
-        return (tre.value + max)
-        
-
 # execution
 grid = toGrid(string)
-ymax = len(grid)
-print(maxTree(toTree(grid, 0, 0), 0))
+
+# iterate through the rows in reverse order
+rowindex = len(grid)-1
+for row in reversed(grid):
+    jindex = 0
+    for j in row:
+        treedict[(rowindex, jindex)] = maxPath(rowindex, jindex, treedict, int(j))
+        jindex += 1
+    rowindex -= 1
+print(treedict[(0, 0)])
 
 ## End Solution 1
 
